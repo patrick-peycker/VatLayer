@@ -1,0 +1,101 @@
+﻿
+<header id="rateListHeader">
+	//@await Component.InvokeAsync("GetCountries") 
+</header>
+
+<section id="rateListSection">
+
+</section>
+
+@*<div class="container">
+	<form>
+		<div class="form-row">
+
+			<div class="col-md-2">
+				<label>Country : </label>
+			</div>
+
+			<div class="col-md-4">
+				<select class="form-control" id="countrySelected" onchange="onCountrySelected(this.value)">
+					<option value="">All</option>
+					@foreach (var item in Model)
+					{
+						<option value="@item.Key">@item.Value.Country_name</option>
+					}
+				</select>
+			</div>
+
+			<div class="col-md-2">
+				<label>Rate : </label>
+			</div>
+
+			<div class="col-md-4">
+				<select class="form-control" id="rateSelected"></select>
+			</div>
+		</div>
+	</form>
+
+	<table class="table table-bordered">
+		<thead class="thead-dark">
+			<tr>
+				<th>Country</th>
+				<th>Standard Rate</th>
+				<th>Reduced Rate</th>
+			</tr>
+		</thead>
+		<tbody id="countriesTable">
+			@for (int i = 0; i < @Model.Count; i++)
+			{
+				<tr class="country">
+					<td>@Model.ElementAt(i).Value.Country_name</td>
+					<td style="text-align:right" onclick="rateSelected(this)">@Model.ElementAt(i).Value.Standard_rate.ToString("0.##") %</td>
+					<td>
+						@if (!(Model.ElementAt(i).Value.Reduced_rates is null))
+						{
+							<table class="table table-bordered">
+								@for (int j = 0; j < @Model.ElementAt(i).Value.Reduced_rates.Count; j++)
+								{
+									<tr>
+										<td>@Model.ElementAt(i).Value.Reduced_rates.ElementAt(j).Key</td>
+										<td style="text-align:right" onclick="rateSelected(this)">@Model.ElementAt(i).Value.Reduced_rates.ElementAt(j).Value.ToString("0.##") %</td>
+									</tr>
+								}
+							</table>
+
+							<ul>
+									@for (int j = 0; j < @Model.ElementAt(i).Value.Reduced_rates.Count; j++)
+									{
+										<li>@Model.ElementAt(i).Value.Reduced_rates.ElementAt(j).Key : @Model.ElementAt(i).Value.Reduced_rates.ElementAt(j).Value</li>
+									}
+								</ul>
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<div id="response">
+
+	</div>
+</div>
+
+<script>
+	function rateSelected(country)
+	{
+		var model = @Model;
+		var option = document.createElement('option');
+		option.value= model['country']
+		document.getElementById("rateSelected").appendChild("option")
+		alert(country);
+		var index = document.getElementById("countrySelected").selectedIndex;
+		var value = document.getElementById("countrySelected").options[index].innerText;
+		var key = document.getElementById("countrySelected").options[index].value;
+
+		document.getElementById("response").innerText = key + " - " + value;
+	}
+
+</script>*@
+
+
+

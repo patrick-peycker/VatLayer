@@ -1,0 +1,21 @@
+﻿@model Dictionary<string, string>
+
+<form>
+	<div class="form-row">
+
+		<div class="col-md-2">
+			<label>Country : </label>
+		</div>
+
+		<div class="col-md-4">
+			<select class="form-control" id="countrySelected" onchange="onCountrySelected(this.value)">
+				<option value="">All</option>
+				@foreach (var item in Model)
+				{
+					<option value="@item.Key">@item.Value</option>
+				}
+			</select>
+		</div>
+
+	</div>
+</form>

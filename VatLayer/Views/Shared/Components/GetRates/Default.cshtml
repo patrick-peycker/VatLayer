@@ -1,0 +1,25 @@
+﻿@model VatLayer.Json.Rate;
+
+<table class="table table-hover">
+	<thead class="thead-dark">
+		<tr>
+			<th colspan="2">@Model.Country_name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Standard Rate</td>
+			<td>@Model.Standard_rate</td>
+		</tr>
+		@if (!(Model.Reduced_rates is null))
+		{
+			@foreach (var item in Model.Reduced_rates)
+			{
+				<tr>
+					<td>@item.Key</td>
+					<td>@item.Value</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
